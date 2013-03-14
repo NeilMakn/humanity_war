@@ -27,6 +27,26 @@ class EntriesController < ApplicationController
     end
   end
 
+  # new route for submission
+  def new
+    #pull a new entry
+    @entry = Entry.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+    end
+  end
+
+  def create
+    @entry = Entry.new(params[:entry])
+
+    if @entry.save
+      redirect_to(@entry)
+    else
+      render :new
+    end
+  end
+
   # PUT /entries/win
   def win
     # Store the last entries so we can display them below
@@ -35,7 +55,7 @@ class EntriesController < ApplicationController
 
     # Increment the win/lose counters
     Entry.find(params[:win_id]).increment!(:wins)
-    Entry.find(params[:lose_id]).increment!(:loses)
+    Entry.find(params[:lose_id]).increment!(:losses)
 
     # Respond with an empty
     respond_to do |format|
@@ -55,9 +75,11 @@ class EntriesController < ApplicationController
   private
 
   def find_small_entries
-    @small_entries = {
-      :last_win_id => Entry.find(session[:last_win_id]),
-      :last_lose_id => Entry.find(session[:last_lose_id])
-    }
+    if session[:last_win_id]
+      @small_entries = {
+        :last_win_id => Entry.find(session[:last_win_id]),
+        :last_lose_id => Entry.find(session[:last_lose_id])
+      }
+    end
   end
 end

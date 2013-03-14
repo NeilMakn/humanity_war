@@ -41,7 +41,7 @@
             = @small_entries[:last_win_id].white_card
       %ul
         %li Wins: #{@small_entries[:last_win_id].wins || 0}
-        %li Loses: #{@small_entries[:last_win_id].loses || 0}
+        %li losses: #{@small_entries[:last_win_id].losses || 0}
         %li Draws: #{@small_entries[:last_win_id].draws || 0}
 
     .third
@@ -54,5 +54,5 @@
             = @small_entries[:last_lose_id].white_card
       %ul
         %li Wins: #{@small_entries[:last_lose_id].wins || 0}
-        %li Loses: #{@small_entries[:last_lose_id].loses || 0}
+        %li losses: #{@small_entries[:last_lose_id].losses || 0}
         %li Draws: #{@small_entries[:last_lose_id].draws || 0}
