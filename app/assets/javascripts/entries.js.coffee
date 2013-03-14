@@ -10,10 +10,11 @@ $ ->
       url: '/entries/win'
       method: 'PUT'
       data:
-        win_id: $target.attr('id').replace('entry-', '')
+        win_id: $target.data('win_id')
         lose_id: $target.data('lose_id')
       success: (data) ->
         location.reload()
+
   $('.icon-refresh').on 'click', (e) ->
     e.preventDefault()
     $target = $('.entries a:first')

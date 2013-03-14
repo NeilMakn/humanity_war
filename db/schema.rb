@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130307195647) do
+ActiveRecord::Schema.define(:version => 20130313165041) do
 
   create_table "black_cards", :force => true do |t|
     t.string   "text"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(:version => 20130307195647) do
     t.integer  "white_card_id"
     t.integer  "black_card_id"
     t.integer  "wins"
-    t.integer  "loses"
+    t.integer  "losses"
     t.integer  "draws"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false

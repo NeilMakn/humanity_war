@@ -1,5 +1,5 @@
 .entries.cf
-  %a{href: '#', id: "entry-#{@entries[0].id}", :'data-lose_id' => @entries[1].id}
+  %a{href: '#', :'data-win_id' => @entries[0].id, :'data-lose_id' => @entries[1].id}
     .entry
       .black-card
         = @entries[0].black_card
@@ -18,7 +18,7 @@
     %a{href: '#'}
       %i.icon-refresh
 
-  %a{href: '#', id: "entry-#{@entries[1].id}", :'data-lose_id' => @entries[0].id}
+  %a{href: '#',  :'data-win_id' => @entries[1].id, :'data-lose_id' => @entries[0].id}
     .entry
       .black-card
         = @entries[1].black_card
@@ -29,12 +29,14 @@
         .icon
           Cards Against Humanity
 
+%h1 Last Round
+
 - if @small_entries
   .small-entries.cf
     .third
       %a{href: "/entries/#{@small_entries[:last_win_id].id}", class: 'cf'}
         .entry
-          %h2 Your choice
+          %h2 Winner
           .black-card
             = @small_entries[:last_win_id].black_card
           .white-card
@@ -47,7 +49,7 @@
     .third
       %a{href: "/entries/#{@small_entries[:last_lose_id].id}", class: 'cf'}
         .entry
-          %h2 Not your choice
+          %h2 Loser
           .black-card
             = @small_entries[:last_lose_id].black_card
           .white-card
